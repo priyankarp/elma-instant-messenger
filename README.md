@@ -10,14 +10,14 @@ EE590 Final Project - A simple instant messenger using Elma (C++)
 5. No authentication required.
 
 
-Resources to be used:
+ <b>Resources to be used: </b>
 1. Elma Library
 2. socket library
 3. httlib
 4. Possibly a GUI library (still researching on this) or a android simulator
 
 
-Personal Milestones for the project:
+<b>Personal Milestones for the project:</b>
 1. 03/12/2019 - Finalizing API for the messenger 
 2. 03/16/2019 - Get multiple connections working 
 3. 03/18/2019 - Figuring out testing strategy, writing tests
