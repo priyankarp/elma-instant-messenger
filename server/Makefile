@@ -1,43 +1,62 @@
 #Compilers
 CC          := g++ -std=c++14
+DGEN        := doxygen
 
-#The Target Library
+#The Target Binary Program
+TARGET      := messenger-server
 
 #The Directories, Source, Includes, Objects, Binary and Resources
+SRCDIR      := .
+INCDIR      := .
+BUILDDIR    := ./build
+TARGETDIR   := ./bin
 SRCEXT      := cc
 
 #Flags, Libraries and Includes
 CFLAGS      := -fsanitize=address -ggdb
-LIB         := -lgtest -lpthread -lasan -lelma -lssl -lcrypto
-INCLUDE		:= -I..
 LIBDIR		:= -L../lib
-ELMALIB		:= ../lib/libelma.a
+LIB         := -lgtest -lpthread -lasan -lelma -lssl -lcrypto
+INC         := -I..
 
 #Files
-TARGETDIR	 := ./bin
-SOURCES      := $(wildcard *.cc)
-TARGETS		 := $(patsubst %.cc,%,$(wildcard *.cc))
-FULL_TARGETS := $(addprefix $(TARGETDIR)/, $(TARGETS))
+DGENCONFIG  := docs.config
+HEADERS     := $(wildcard *.h)
+SOURCES     := $(wildcard *.cc)
+OBJECTS     := $(patsubst %.cc, $(BUILDDIR)/%.o, $(notdir $(SOURCES)))
 
-#Default Make
-all: dirs $(FULL_TARGETS)
+#Defauilt Make
+all: directories $(TARGETDIR)/$(TARGET)
 
-dirs: $(TARGETDIR)
+#Remake
+remake: cleaner all
+
+#Make the Directories
+directories:
 	@mkdir -p $(TARGETDIR)
+	@mkdir -p $(BUILDDIR)
+
+# Make the documentation
+$(DGENCONFIG):
+	$(DGEN) -g $(DGENCONFIG)
+
+docs: $(SOURCES) $(HEADERS) $(DGENCONFIG)
+	$(DGEN) $(DGENCONFIG)
 
 #Clean only Objects
 clean:
-	@$(RM) -rf $(TARGETDIR)
+	@$(RM) -rf $(BUILDDIR)/*.o
 
+#Full Clean, Objects and Binaries
 spotless: clean
 	@$(RM) -rf $(TARGETDIR)/$(TARGET) $(DGENCONFIG) *.db
 	@$(RM) -rf build bin html latex
-	
-# Compile
-$(TARGETDIR)/%: %.cc $(ELMALIB)
-	$(CC) $(CFLAGS) $(INCLUDE) $< $(LIBDIR) $(LIB) -o $@
 
-# bin/basic: basic.cc
-# 	$(CC) $(CFLAGS) $(INCLUDE) $<  $(LIBDIR) $(LIB) -o $@
+#Link
+$(TARGETDIR)/$(TARGET): $(OBJECTS) $(HEADERS)
+	$(CC) $(CFLAGS) $(INC) -o $(TARGETDIR)/$(TARGET) $^ $(LIBDIR) $(LIB)
 
-.PHONY: directories remake clean cleaner $(BUILDDIR) $(TARGETDIR)
+#Compile
+$(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT) $(HEADERS)
+	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
+
+.PHONY: directories remake clean cleaner apidocs $(BUILDDIR) $(TARGETDIR)
