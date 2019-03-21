@@ -13,7 +13,16 @@ int main() {
 
     Manager m;
     StopWatch stopwatch;
+    MessengerClient msgClient;
     UserInterface ui(stopwatch);
+
+    //create one client in one main
+
+    //show on ui that particular client is online
+
+    //ui should be same on all clients
+
+
 
     m.schedule(ui, 10_ms)
      .schedule(stopwatch, 10_ms)     

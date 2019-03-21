@@ -78,36 +78,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">My Elma Project Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a href="http://klavinslab.org/elma">Elma</a> is an event loop manager designed to teach embedded and reactive systems programming. This repository contains an example Elma project, showing how to use many Elma features, as well as illustrating how to arrange the files and directories in an Elma project.</p>
-<p>The source code for this project is available <a href="https://github.com/klavinslab/elma_project">on github</a>.</p>
-<h2>Installation </h2>
-<pre class="fragment">git clone https://github.com/klavinslab/elma_project.git
-cd elma_project
-docker run -v $PWD:/source -it klavins/elma:latest bash
-make
-make docs
-</pre><h2>Execution </h2>
-<p>To run the stopwatch, type </p><pre class="fragment">bin/stopwatch
-</pre><p>The stopwatch is controlled via the keyboard, via these keys:</p><ul>
-<li><b>s</b>: Start or stop</li>
-<li><b>l</b>: Lap</li>
-<li><b>r</b>: Reset</li>
-<li><b>q</b>: Quit</li>
-</ul>
-<h2>Testing </h2>
-<p>To run tests, do ```bash bin/test ```</p>
-<h2>Architecture </h2>
-<p>Describe how your project was designed, what choices you made, how things are organized, etc.</p>
-<h2>Results </h2>
-<p>Describe the results of testing and running your code. Include visuals when possible.</p>
-<h2>Acknowledgements </h2>
-<p>Mention anyone who helped you and how.</p>
-<h2>References </h2>
-<p>List all libraries, articles, stack overflow answers, etc. that you used to get your code working. </p>
+<div class="textblock"><p>EE590 Final Project - A simple instant messenger using Elma (C++)</p>
+<p><b>Specifications of this applications are as follows: </b></p><ol type="1">
+<li>The IM communication can happen between two or more people.</li>
+<li>Only text based messeges.</li>
+<li>Connection will be established using TCP IP communication.</li>
+<li>RealTime Communication.</li>
+<li><p class="startli">No authentication required.</p>
+<p class="startli"><b>Resources to be used: </b></p>
+</li>
+</ol>
+<ol type="1">
+<li>Elma Library</li>
+<li>socket library</li>
+<li>httlib</li>
+<li>Possibly a GUI library (still researching on this) or a android simulator</li>
+</ol>
+<p><b>Personal Milestones for the project:</b></p><ol type="1">
+<li>03/12/2019 - Finalizing API for the messenger</li>
+<li>03/16/2019 - Get multiple connections working</li>
+<li>03/18/2019 - Figuring out testing strategy, writing tests</li>
+<li>03/20/2019 - Getting some GUI working</li>
+<li>03/22/2019 - Final Project submission </li>
+</ol>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 14 2019 18:49:22 for My Elma Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 15 2019 23:01:51 for My Elma Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
