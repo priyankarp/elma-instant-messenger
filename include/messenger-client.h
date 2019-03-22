@@ -1,12 +1,12 @@
-#ifndef _CLIENT_H
-#define _CLIENT_H
+#ifndef _MSG_CLIENT_H
+#define _MSG_CLIENT_H
 
 #define CPPHTTPLIB_OPENSSL_SUPPORT
 #include "httplib/httplib.h"
 
 #include <string>
 #include <tuple>
-#include "elma.h"
+#include "elma/elma.h"
 
 namespace elma {
 
@@ -37,8 +37,8 @@ namespace elma {
 
         //! Construct a new client. Only the Manager would normall do this, although
         //! a client can work as a standalone object.
-        MessengerClient(string name) : _use_ssl(false) {
-            this->_client_name = name;
+        MessengerClient() : _use_ssl(false) {
+            //this->_client_name = name;
             
         }
 

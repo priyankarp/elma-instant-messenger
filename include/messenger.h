@@ -4,10 +4,11 @@
 #include "elma/elma.h" // Note installation directory for elma
 
 #include "messenger-user-interface.h"
+#include "messenger-client.h"
 
-namespace messenger {
-    using namespace elma;    
-
+namespace messenger{
+    using namespace elma;  
+    using namespace messenger;  
 
     class OnlineState : public State {
         public:
@@ -19,7 +20,7 @@ namespace messenger {
         }
     };
 
-    
+
     class OfflineState : public State {
         public:
         OfflineState() : State("User offline") {}
@@ -42,7 +43,7 @@ namespace messenger {
 
     class ReceiveState : public State {
         public:
-        SendState() : State("Receiving msgs") {}
+        ReceiveState() : State("Receiving msgs") {}
         void entry(const Event& e) {}
         void during() {} 
         void exit(const Event& e) {
@@ -90,16 +91,17 @@ namespace messenger {
         SendState send;
         ReceiveState receive;
 
-        MessengerClient myClient(client_name);
+        MessengerClient myClient; //(client_name);
 
-        // Other private variables
+        /*// Other private variables
         bool _running;
         high_resolution_clock::time_point _start_time;
         high_resolution_clock::duration _elapsed;
-        vector<high_resolution_clock::duration> _laps;
+        vector<high_resolution_clock::duration> _laps;*/
 
     };
 
 }
+
 
 #endif

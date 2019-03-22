@@ -1,9 +1,8 @@
 #include <unistd.h>
 #include "messenger.h"
 
-using namespace stopwatch;
 
-UserInterface::UserInterface(Messenger& msgr) : Process("user input"), _messenger(msgr) {
+UserInterface::UserInterface(Messenger& msgr) : Process("messenger"), _messenger(msgr) {
     initscr();   // Start ncurses
     timeout(1);  // Timeout for waiting for user input
     noecho();    // Do not echo user input to the screen

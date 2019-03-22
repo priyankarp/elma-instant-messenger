@@ -3,18 +3,19 @@
 #include <vector>
 #include <ncurses.h>
 
-#include "stopwatch.h"
+#include "messenger.h"
+#include "messenger-user-interface.h"
 
 using namespace std::chrono;
 using namespace elma;
-using namespace stopwatch;
+using namespace messenger;
 
 int main() {
 
     Manager m;
-    Messenger myMsgr("pri");
-    MessengerClient msgClient;
-    UserInterface ui(stopwatch);
+    Messenger msgr("pri");
+    //MessengerClient msgClient;
+    UserInterface ui(msgr);
 
     //create one client in one main
 
@@ -25,7 +26,7 @@ int main() {
 
 
     m.schedule(ui, 10_ms)
-     .schedule(stopwatch, 10_ms)     
+     .schedule(msgr, 10_ms)     
      .init()
      .run();
 

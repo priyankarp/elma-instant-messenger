@@ -3,9 +3,9 @@
 #include <vector>
 #include <ncurses.h>
 
-#include "stopwatch.h"
+#include "messenger.h"
 
-namespace stopwatch {
+namespace messenger {
 
     using namespace std::chrono;
     using namespace elma;
@@ -14,10 +14,12 @@ namespace stopwatch {
     //! A user interface for the a StopWatch object
     class UserInterface : public Process {
 
+        //class Messenger;
+
         public:
 
         //! Create a new stopwatch user interface using curses
-        //! \param sw A reference to a StopWatch object
+        //! \param sw A reference to a Messenger object
         UserInterface(Messenger& msgr);
 
         void init() {}
@@ -34,5 +36,4 @@ namespace stopwatch {
         Messenger& _messenger;
 
     };
-
 }
