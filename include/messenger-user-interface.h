@@ -9,7 +9,7 @@ namespace stopwatch {
 
     using namespace std::chrono;
     using namespace elma;
-    using namespace stopwatch;
+    using namespace messenger;
 
     //! A user interface for the a StopWatch object
     class UserInterface : public Process {
@@ -18,7 +18,7 @@ namespace stopwatch {
 
         //! Create a new stopwatch user interface using curses
         //! \param sw A reference to a StopWatch object
-        UserInterface(MessengerClient& sw);
+        UserInterface(Messenger& msgr);
 
         void init() {}
         void start() {}
@@ -31,7 +31,7 @@ namespace stopwatch {
         void stop() {}
 
         private:
-        MessengerClient& _messengerClient;
+        Messenger& _messenger;
 
     };
 

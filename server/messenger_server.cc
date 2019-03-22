@@ -27,15 +27,26 @@ int main(void)
     // This should be at least replaced with a databases class
     // Or better yet, use an actual databse like sqlite, mysql, postgress, etc.
     //  id              timestamp  x       y       temperature
-    std::map<int, std::tuple<double, string, string> > messeges;
-    int next_id = 0;
+    std::map<string, std::vector< std::pair<string, string> > recipientToMessages;
+    std::map<string, bool> userStatus;
 
-    svr.Post("/send", [&](const Request& req, Response& res) { 
-
+    svr.Post("/post-messages", [&](const Request& req, Response& res) {
+        std::cout << "Received post message request" << "\n";
         json request, result;
 
         try {
             request = json::parse(req.body);
+            string sender = request["sender"];
+            string recipient = request["recipient"];
+            string message = request["message"];
+            vector<string> temp;
+            if (recipientToMessages.find(recipient) != recipientToMessages.end()) {
+                temp = recipientToMessages[recipient];
+            }
+           
+            temp.push_back(std::make_pair(recipient, message));
+            recipientToMessages[recipient] = temp;
+
         } catch(json::exception e) {
             result["result"] = "error";
             result["message"] = e.what();
@@ -43,45 +54,39 @@ int main(void)
             return;
         }
 
-        std::cout << "Got new send request " << request.dump() << std::endl;  
-
-        messeges[next_id] = std::make_tuple(
-          unix_timestamp(),
-          request["user"],
-          request["message"]
-        );
-
         result["result"] = "ok";
-        result["id"] = next_id++;
         res.set_content(result.dump(), "json");
-
     });
 
-    svr.Get("/receive", [&](const Request& req, Response& res) {
-
-        //std::cout << "Received a message from = " /*<< req.matches[1]*/ << "\n";
-        //auto id = std::stoi(req.matches[1].str());
-        json result, request;
-
+    svr.Post(R"(/online/(\s+)/(\s+))", [&](const Request& req, Response& res) {
+        std::cout << "Got new online request for id = " << req.matches[1] << " status = " << req.matches[2] << "\n";
+        string user = req.matches[1];
+        bool status;
+        if(req.matches[2] == "true") {
+            status = true;
+        } else {
+            status = false;
+        }
+        userStatus[user] = status;
+    });
+ 
+    svr.Get(R"(/get-messages/(\s+))", [&](const Request& req, Response& res) {
+        std::cout << "Got get message request for id = " << req.matches[1] << "\n";
+        json result;
         try {
-            request = json::parse(req.body);
+            string recipient = req.matches[1];
+            if (recipientToMessages.find(recipient) != recipientToMessages.end()){
+                result["messages"] = recipientToMessages[recipient];
+            } else {
+                vector<string> temp;
+                request["messages"] = temp;
+            }
         } catch(json::exception e) {
             result["result"] = "error";
             result["message"] = e.what();
             res.set_content(result.dump(), "json");
             return;
         }
-
-        std::cout << "New msg received =  " << request.dump() << std::endl;  
-
-        messeges[next_id] = std::make_tuple(
-          unix_timestamp(),
-          request["user"],
-          request["message"]
-        );
-
-        result["result"] = "ok";
-        result["id"] = next_id++;
         res.set_content(result.dump(), "json");
     });
 
@@ -91,4 +96,3 @@ int main(void)
     std::cout << "You can't see me, because svr.listen never returns\n";
 
 }
-

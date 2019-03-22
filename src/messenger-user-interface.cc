@@ -1,16 +1,16 @@
 #include <unistd.h>
-#include "stopwatch.h"
+#include "messenger.h"
 
 using namespace stopwatch;
 
-UserInterface::UserInterface(MessengerClient& cli) : Process("user input"), _messengerClient(cli) {
+UserInterface::UserInterface(Messenger& msgr) : Process("user input"), _messenger(msgr) {
     initscr();   // Start ncurses
     timeout(1);  // Timeout for waiting for user input
     noecho();    // Do not echo user input to the screen
     curs_set(0); // Do not show the cursor
 };
 
-void UserInterface::show_time(int x, int y, high_resolution_clock::duration d) {
+void UserInterface::show_messeges(int x, int y, string msg) {
 
     // Print the time at the desired position.
     // mvprintw just calls sprintf
@@ -30,15 +30,15 @@ void UserInterface::update() {
     int c = getch();
 
     switch ( c ) {            
-        case 's':
-            emit(Event("start/stop"));
+        case 'n':
+            emit(Event("online"));
             break;
-        case 'r':
-            emit(Event("reset"));
+        case 's':
+            emit(Event("send"));
             clear(); // Clear the screen of old stuff
             break;
-        case 'l':
-            emit(Event("lap"));
+        case 'r':
+            emit(Event("receive"));
             break;
         case 'q':
             std::cout << "halting\n";
@@ -47,8 +47,8 @@ void UserInterface::update() {
     }
 
     // OUTPUT
-    show_messages(1,1,_messengerClient.value()); // change .value() to .msgstring() - add this method
-    mvprintw(3,1,"start/stop(s), lap(l), reset(r), quit(q)");
+    show_messages(1,1,_messenger.value()); // change .value() to .msgstring() - add this method
+    mvprintw(3,1,"online(n), send(s), receive(r), offline/quit(q)");
     for ( int i=0; i<_messengerClient.laps().size(); i++ ) {
         mvprintw(5+i, 1, "Lap %d", _messengerClient.laps().size()-i);
         show_messages(5+i, 10, _messengerClient.laps()[i]);

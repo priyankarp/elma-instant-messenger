@@ -88,24 +88,24 @@ namespace elma {
                 json_response = json::parse(response->body);
                 
              } else if ( response ) {
-                std::cout << "Warning:: Elma client connected to a server that returned Error: " 
+                std::cout << "Warning:: Messenger client connected to a server that returned Error: " 
                           << response->status 
                           << std::endl;
             } else {
-                std::cout << "Warning:: Elma client returned no result" 
+                std::cout << "Warning:: Messenger client returned no result" 
                           << std::endl;
             }
 
         } catch (const httplib::Exception& e) {
-            std::cout << "Warning: Elma client failed: " 
+            std::cout << "Warning: Messenger client failed: " 
                       << e.what() 
                       << "\n";
         } catch(const json::exception& e ) {
-            std::cout << "Warning: Elma client could not parse response: " 
+            std::cout << "Warning: Messenger client could not parse response: " 
                       << e.what() 
                       << "\n";
         } catch (...) {
-            std::cout << "Warning: Elma client failed with no message\n";
+            std::cout << "Warning: Messenger client failed with no message\n";
         }
 
         _mtx.lock();
@@ -123,27 +123,26 @@ namespace elma {
             if (response && response->status == 200) {
                 json_response = json::parse(response->body);
              } else if ( response ) {
-                std::cout << "Warning:: Elma-Messenger client connected to a server that returned Error: " 
+                std::cout << "Warning:: Messenger client connected to a server that returned Error: " 
                           << response->status 
                           << std::endl;
             } else {
-                std::cout << "Warning:: Elma-Messenger client returned no result" 
+                std::cout << "Warning:: Messenger client returned no result" 
                           << std::endl;
             }
 
         } catch (const httplib::Exception& e) {
-            std::cout << "Warning: Elma-Messenger client failed: " 
+            std::cout << "Warning: Messenger client failed: " 
                       << e.what() 
                       << "\n";
         } catch(const json::exception& e ) {
-            std::cout << "Warning: Elma-Messenger client could not parse response: " 
+            std::cout << "Warning: Messenger client could not parse response: " 
                       << e.what() 
                       << "\n";
         } catch (...) {
-            std::cout << "Warning: Elma-Messenger client failed with no message\n";
-        }        
-
-       
+            std::cout << "Warning: Messenger client failed with no message\n";
+        }
+        
         _mtx.lock();
         _responses.push_back(std::make_tuple(json_response, handler));
         _mtx.unlock();

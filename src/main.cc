@@ -12,7 +12,7 @@ using namespace stopwatch;
 int main() {
 
     Manager m;
-    StopWatch stopwatch;
+    Messenger myMsgr("pri");
     MessengerClient msgClient;
     UserInterface ui(stopwatch);
 

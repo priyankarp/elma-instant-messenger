@@ -39,6 +39,7 @@ namespace elma {
         //! a client can work as a standalone object.
         MessengerClient(string name) : _use_ssl(false) {
             this->_client_name = name;
+            
         }
 
         //! Send an HTTP GET request to a specific URL and register a handler 
