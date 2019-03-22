@@ -1,8 +1,9 @@
 #ifndef _ELMA_MESSENGER_H
 #define _ELMA_MESSENGER_H
 
-#include "elma/elma.h" // Note installation directory for elma
+#include <iostream>
 
+#include "elma/elma.h" // Note installation directory for elma
 #include "online.h"
 #include "offline.h"
 #include "receive.h"
@@ -64,8 +65,8 @@ namespace messenger {
         string _receiverName;
         string sendURL = "http://messenger-server/post-messages";
         string receiveURL = "http://messenger-server/get-messages/" + client_name;
-        string userStatus_online = "http://messenger-server/status/" +  client_name + "/true";
-        string userStatus_offline = "http://messenger-server/status/" +  client_name + "/false";
+        string userStatus_online = "http://messenger-server/status/pri/true";
+        string userStatus_offline = "http://messenger-server/status/pri/false";
     };
 
 }

@@ -13,6 +13,7 @@ Messenger::Messenger(string name) : StateMachine(name) {
 
     //Set client name 
     this->client_name = name;
+    cout << "client name in constructor" << client_name << endl;
 
     // Define state machine initial states and transitions here
     set_initial(offline);
@@ -41,8 +42,11 @@ Messenger::Messenger(string name) : StateMachine(name) {
 
 void Messenger::goOnline() {
     json data = "x : 12";
+    //std::cout << "client online url=" << userStatus_online << "\n";
     msgr_client.post(userStatus_online, data, [this](json& response) {
-        cout<<response.dump()<<endl;
+        if(response["result"] == "ok"){
+            cout << "\npri is online." << endl;
+        }
     }); 
     msgr_client.process_responses();
     //msgr_client.post()

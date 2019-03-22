@@ -58,7 +58,7 @@ int main(void)
         res.set_content(result.dump(), "json");
     });
 
-    svr.Post(R"(/status/(\d+)/(\d+))", [&](const Request& req, Response& res) {
+    svr.Post(R"(/status/(.*)/(.*))", [&](const Request& req, Response& res) {
         std::cout << "Got new online request for id = " << req.matches[1] << " status = " << req.matches[2] << "\n";
         string user = req.matches[1];
         bool status;
@@ -68,6 +68,10 @@ int main(void)
             status = false;
         }
         userStatus[user] = status;
+
+        json result;
+        result["result"] = "ok";
+        res.set_content(result.dump(), "json");
     });
  
     svr.Get(R"(/get-messages/(\d+))", [&](const Request& req, Response& res) {
