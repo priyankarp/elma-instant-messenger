@@ -8,6 +8,7 @@
 #include "receive.h"
 #include "send.h"
 #include "messenger-user-interface.h"
+#include "messenger-client.h"
 
 namespace messenger {
 
@@ -21,23 +22,26 @@ namespace messenger {
         //! Make a new stopwatch
         Messenger(string name);
 
-        /*//! Start the stopwatch
-        void begin();
+        //! Go online
+        void goOnline();
 
-        //! Reset the stopwatch to zero and erase laps
-        void reset();
+        //! Enter receivers user-name
+        void enterReceiver();
 
-        //! Stop the stopwatch
-        void stop();
+        //! send messages
+        void sendMessage();
 
-        //! Add a lap time to the list of lap times.
-        void lap();
+        //! Receive messages
+        void receiveMessage();
+
+        //! Go offline
+        void goOffline();
 
         //! Get the time stored by the stopwatch
-        high_resolution_clock::duration value();
+        //high_resolution_clock::duration value();
 
         //! Get a list of lap times
-        const vector<high_resolution_clock::duration>& laps() { return _laps; }*/
+        //const vector<high_resolution_clock::duration>& laps() { return _laps; }
 
         private:
 
@@ -51,12 +55,17 @@ namespace messenger {
         SendState send;
         ReceiveState receive;
 
-        Client myClient; //(client_name);
+        MessengerClient msgr_client; //(client_name);
 
+        //Messages
+        vector<string> _sent_messages;
+        vector<string> _received_messages;
+
+        string _receiverName;
         string sendURL = "http://messenger-server/post-messages";
         string receiveURL = "http://messenger-server/get-messages/" + client_name;
-        string userStatus_online = "http://messenger-server/status" +  client_name + "true";
-        string userStatus_offline = "http://messenger-server/status" +  client_name + "false";
+        string userStatus_online = "http://messenger-server/status/" +  client_name + "/true";
+        string userStatus_offline = "http://messenger-server/status/" +  client_name + "/false";
     };
 
 }

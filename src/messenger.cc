@@ -1,11 +1,13 @@
 #include <chrono>
 #include <vector>
+#include <iostream>
 
 #include "messenger.h"
 
 using namespace std::chrono;
 using namespace elma;
 using namespace messenger;
+using namespace std;
 
 Messenger::Messenger(string name) : StateMachine(name) {
 
@@ -13,8 +15,9 @@ Messenger::Messenger(string name) : StateMachine(name) {
     this->client_name = name;
 
     // Define state machine initial states and transitions here
-    set_initial(online);
+    set_initial(offline);
     set_propagate(false);
+    add_transition("online", offline, online);
     add_transition("send", online, send);
     add_transition("send", receive, send);   
     add_transition("send", send, send); 
@@ -24,7 +27,6 @@ Messenger::Messenger(string name) : StateMachine(name) {
     add_transition("offline", online, offline);
     add_transition("offline", send, offline);
     add_transition("offline", receive, offline);
-
     // Make sure we start in the right condition
     //reset();
 }
@@ -35,21 +37,28 @@ Messenger::Messenger(string name) : StateMachine(name) {
     } else {
         return _elapsed;
     }
-}
-
-void StopWatch::begin() {
-    _start_time = high_resolution_clock::now();
-}
-
-void StopWatch::reset() {
-    _elapsed = high_resolution_clock::duration::zero();
-    _laps.clear();
-}
-
-void StopWatch::stop() {
-    _elapsed += high_resolution_clock::now() - _start_time;
-}
-
-void StopWatch::lap() {
-    _laps.insert(_laps.begin(), value());
 }*/
+
+void Messenger::goOnline() {
+    json data = "x : 12";
+    msgr_client.post(userStatus_online, data, [this](json& response) {
+        cout<<response.dump()<<endl;
+    }); 
+    msgr_client.process_responses();
+    //msgr_client.post()
+}
+
+void Messenger::enterReceiver() {
+
+}
+
+void Messenger::sendMessage() {
+}
+
+void Messenger::receiveMessage() {
+
+}
+
+void Messenger::goOffline() {
+
+}

@@ -17,7 +17,7 @@ namespace messenger {
         public:
         //! Construct a new off state
         OnlineState() : State("User online") {}
-        void entry(const Event& e) {}
+        void entry(const Event& e);
         void during() {} 
         
         //! Perform actions required when switching from off to on

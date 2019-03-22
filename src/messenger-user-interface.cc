@@ -34,6 +34,11 @@ void UserInterface::update() {
         case 'n':
             emit(Event("online"));
             break;
+        case 'e':
+            //emit(Event("send"));
+            //cin >> "
+            clear(); // Clear the screen of old stuff
+            break;
         case 's':
             emit(Event("send"));
             clear(); // Clear the screen of old stuff
@@ -49,12 +54,14 @@ void UserInterface::update() {
     }
 
     // OUTPUT
-    
+    mvprintw(1, 1, "Welcome to Elma-Instant-Messenger");
+
+    mvprintw(3, 1, "Follow the legend below to start using the messenger");
     //show_messages(1,1,_messenger.value()); // change .value() to .msgstring() - add this method
-    mvprintw(3,1,"online(n), send(s), receive(r), offline/quit(q)");
-    /*for ( int i=0; i<_messengerClient.laps().size(); i++ ) {
-        mvprintw(5+i, 1, "Lap %d", _messengerClient.laps().size()-i);
-        show_messages(5+i, 10, _messengerClient.laps()[i]);
+    mvprintw(4,1,"online(n), enter receiver's name(e), send msg(s), receive msgs(r), offline/quit(q)");
+    /*for ( int i=0; i<_messenger.laps().size(); i++ ) {
+        //mvprintw(5+i, 1, "Lap %d", _messenger.laps().size()-i);
+        //show_messages(6+i, 10, _messenger.laps()[i]);
     }*/
 
     // NOTE: Since the stopwatch is running every 10 ms, we should sleep

@@ -10,6 +10,17 @@ using namespace messenger;
 
 Messenger&OnlineState:: messenger() { return (Messenger&) state_machine(); }
 
+void OnlineState::entry(const Event& e) {
+    //if ( e.name() == "start/stop" ) {
+        // User went online
+        messenger().goOnline();
+        messenger().enterReceiver();
+    //} else if ( e.name() == "lap" ) {
+        // User adds a lap to the stopwatch lap list
+    //    stopwatch().lap();
+    //}
+}
+
 void OnlineState::exit(const Event& e) {
     //if ( e.name() == "start/stop" ) {
         // User stopped the stopwatch
