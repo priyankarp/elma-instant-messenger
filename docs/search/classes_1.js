@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['stopwatch',['StopWatch',['../classstopwatch_1_1StopWatch.html',1,'stopwatch']]]
+  ['offlinestate',['OfflineState',['../classmessenger_1_1OfflineState.html',1,'messenger']]],
+  ['onlinestate',['OnlineState',['../classmessenger_1_1OnlineState.html',1,'messenger']]]
 ];

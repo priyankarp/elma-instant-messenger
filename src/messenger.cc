@@ -9,13 +9,16 @@ using namespace messenger;
 
 Messenger::Messenger(string name) : StateMachine(name) {
 
+    //Set client name 
+    this->client_name = name;
+
     // Define state machine initial states and transitions here
     set_initial(online);
     set_propagate(false);
     add_transition("send", online, send);
     add_transition("send", receive, send);   
     add_transition("send", send, send); 
-    add_transition("receive", on, receive);  
+    add_transition("receive", online, receive);  
     add_transition("receive", send, receive);   
     add_transition("receive", receive, receive);             
     add_transition("offline", online, offline);
@@ -23,7 +26,7 @@ Messenger::Messenger(string name) : StateMachine(name) {
     add_transition("offline", receive, offline);
 
     // Make sure we start in the right condition
-    reset();
+    //reset();
 }
 
 /*high_resolution_clock::duration StopWatch::value() {

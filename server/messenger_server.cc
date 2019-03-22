@@ -27,7 +27,7 @@ int main(void)
     // This should be at least replaced with a databases class
     // Or better yet, use an actual databse like sqlite, mysql, postgress, etc.
     //  id              timestamp  x       y       temperature
-    std::map<string, std::vector< std::pair<string, string> > recipientToMessages;
+    std::map<string, std::vector< std::pair<string, string> > > recipientToMessages;
     std::map<string, bool> userStatus;
 
     svr.Post("/post-messages", [&](const Request& req, Response& res) {
@@ -39,7 +39,7 @@ int main(void)
             string sender = request["sender"];
             string recipient = request["recipient"];
             string message = request["message"];
-            vector<string> temp;
+            vector< std::pair<string, string> > temp;
             if (recipientToMessages.find(recipient) != recipientToMessages.end()) {
                 temp = recipientToMessages[recipient];
             }
@@ -58,7 +58,7 @@ int main(void)
         res.set_content(result.dump(), "json");
     });
 
-    svr.Post(R"(/online/(\s+)/(\s+))", [&](const Request& req, Response& res) {
+    svr.Post(R"(/status/(\s+)/(\s+))", [&](const Request& req, Response& res) {
         std::cout << "Got new online request for id = " << req.matches[1] << " status = " << req.matches[2] << "\n";
         string user = req.matches[1];
         bool status;
@@ -79,7 +79,7 @@ int main(void)
                 result["messages"] = recipientToMessages[recipient];
             } else {
                 vector<string> temp;
-                request["messages"] = temp;
+                result["messages"] = temp;
             }
         } catch(json::exception e) {
             result["result"] = "error";

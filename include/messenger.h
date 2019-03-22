@@ -8,7 +8,6 @@
 #include "receive.h"
 #include "send.h"
 #include "messenger-user-interface.h"
-#include "messenger-client.h"
 
 namespace messenger {
 
@@ -49,10 +48,15 @@ namespace messenger {
         //states
         OnlineState online;
         OfflineState offline;
-        SendState sending;
+        SendState send;
         ReceiveState receive;
 
-        MessengerClient myClient; //(client_name);
+        Client myClient; //(client_name);
+
+        string sendURL = "http://messenger-server/post-messages";
+        string receiveURL = "http://messenger-server/get-messages/" + client_name;
+        string userStatus_online = "http://messenger-server/status" +  client_name + "true";
+        string userStatus_offline = "http://messenger-server/status" +  client_name + "false";
     };
 
 }

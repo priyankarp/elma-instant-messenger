@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['userinterface',['UserInterface',['../classstopwatch_1_1UserInterface.html',1,'stopwatch']]]
+  ['receivestate',['ReceiveState',['../classmessenger_1_1ReceiveState.html',1,'messenger']]]
 ];

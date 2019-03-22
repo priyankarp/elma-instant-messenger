@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node2" href="$classstopwatch_1_1StopWatch.html" title="A stop watch class, that inherits from StateMachine. " alt="" coords="164,5,327,32"/>
+<area shape="rect" id="node2" href="$classmessenger_1_1OfflineState.html" title="A State class to represen the state in which the stopwatch is off. " alt="" coords="115,5,292,32"/>
+<area shape="rect" id="node3" href="$classmessenger_1_1OnlineState.html" title="A State class to represen the state in which the stopwatch is off. " alt="" coords="115,56,292,83"/>
+<area shape="rect" id="node4" href="$classmessenger_1_1ReceiveState.html" title="A State class to represen the state in which the stopwatch is off. " alt="" coords="111,107,296,133"/>
+<area shape="rect" id="node5" href="$classmessenger_1_1SendState.html" title="A State class to represen the state in which the stopwatch is off. " alt="" coords="118,157,289,184"/>
 </map>

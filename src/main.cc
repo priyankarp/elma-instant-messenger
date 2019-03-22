@@ -14,16 +14,7 @@ int main() {
 
     Manager m;
     Messenger msgr("pri");
-    //MessengerClient msgClient;
     UserInterface ui(msgr);
-
-    //create one client in one main
-
-    //show on ui that particular client is online
-
-    //ui should be same on all clients
-
-
 
     m.schedule(ui, 10_ms)
      .schedule(msgr, 10_ms)     

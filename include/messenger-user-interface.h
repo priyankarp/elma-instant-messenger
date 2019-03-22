@@ -9,9 +9,9 @@ namespace messenger {
 
     using namespace std::chrono;
     using namespace elma;
-    using namespace messenger;
+    //using namespace messenger;
 
-    //! A user interface for the a StopWatch object
+    //! A user interface for the a Messenger object
     class UserInterface : public Process {
 
         //class Messenger;

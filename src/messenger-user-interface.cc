@@ -1,6 +1,8 @@
 #include <unistd.h>
 #include "messenger.h"
 
+using namespace messenger;
+using namespace elma;
 
 UserInterface::UserInterface(Messenger& msgr) : Process("messenger"), _messenger(msgr) {
     initscr();   // Start ncurses
@@ -9,11 +11,11 @@ UserInterface::UserInterface(Messenger& msgr) : Process("messenger"), _messenger
     curs_set(0); // Do not show the cursor
 };
 
-void UserInterface::show_messeges(int x, int y, string msg) {
+void UserInterface::show_messages(int x, int y, string msg) {
 
     // Print the time at the desired position.
     // mvprintw just calls sprintf
-    mvprintw(x,y,"test msg", 
+    mvprintw(x,y,"test msg" 
         //std::chrono::duration_cast<std::chrono::minutes>(d).count(),
         //std::chrono::duration_cast<std::chrono::seconds>(d).count()%60,
         //(std::chrono::duration_cast<std::chrono::milliseconds>(d).count()%1000)/10
@@ -41,6 +43,7 @@ void UserInterface::update() {
             break;
         case 'q':
             std::cout << "halting\n";
+            emit(Event("offline"));
             halt();
             break;
     }

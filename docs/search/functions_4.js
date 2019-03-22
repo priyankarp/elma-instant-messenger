@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['reset',['reset',['../classstopwatch_1_1StopWatch.html#a1c0dcc57c615559f24bc9f8759271a9d',1,'stopwatch::StopWatch']]]
+  ['sendstate',['SendState',['../classmessenger_1_1SendState.html#a1aff91e0d29d7176547ec132cdf80444',1,'messenger::SendState']]],
+  ['show_5fmessages',['show_messages',['../classmessenger_1_1UserInterface.html#a61565c2ce084aa670dda4224c93131ae',1,'messenger::UserInterface']]]
 ];
