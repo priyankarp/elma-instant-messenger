@@ -18,14 +18,30 @@ Installation
     docker run -v $PWD:/source -it klavins/elma:latest bash
     make
     make docs
+    cd server
+    make
+    make docs
 
 Execution
 ---
-To run the stopwatch, type
-
+To run the messenger for simulation purpose, we need three terminal windows - one for the server and two for two messenger clients/users.
+Create a server in new terminal:
+    cd elma-instant-messenger
+    cd server
+    docker run --name messenger-server -v $PWD:/source -it klavins/elma:latest bash
     bin/messenger-server
-    bin/messenger
 
+Create a client in new terminal:
+    cd elma-instant-messenger
+    docker run --name client1 --link messenger-server -v $PWD:/source -it klavins/elma:latest bash
+    bin/messenger
+    (Enter user name. e.g. "Emma")
+
+Create another client in new terminal:
+    cd elma-instant-messenger
+    docker run --name client2 --link messenger-server -v $PWD:/source -it klavins/elma:latest bash
+    bin/messenger
+    (Enter user name. e.g. "Jack")
 
 
 Resources
