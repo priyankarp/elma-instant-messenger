@@ -13,7 +13,19 @@ Messenger::Messenger(string name) : StateMachine(name) {
 
     //Set client name 
     this->client_name = name;
-    cout << "client name in constructor" << client_name << endl;
+
+    sendURL = "http://messenger-server/post-messages";
+
+    receiveURL.append("http://messenger-server/get-messages/");
+    receiveURL.append(client_name); //+ client_name;
+
+    userStatus_online.append("http://messenger-server/status/");
+    userStatus_online.append(client_name);
+    userStatus_online.append("/true");
+
+    userStatus_offline.append("http://messenger-server/status/");
+    userStatus_offline.append(client_name);
+    userStatus_offline.append("/false");
 
     // Define state machine initial states and transitions here
     set_initial(offline);
@@ -32,20 +44,14 @@ Messenger::Messenger(string name) : StateMachine(name) {
     //reset();
 }
 
-/*high_resolution_clock::duration StopWatch::value() {
-    if ( current().name() == "on" ) {
-        return high_resolution_clock::now() - _start_time + _elapsed;
-    } else {
-        return _elapsed;
-    }
-}*/
-
 void Messenger::goOnline() {
     json data = "x : 12";
     //std::cout << "client online url=" << userStatus_online << "\n";
     msgr_client.post(userStatus_online, data, [this](json& response) {
         if(response["result"] == "ok"){
-            cout << "\npri is online." << endl;
+            //cout << "\npri is online." << endl;
+            string temp = "\n" + client_name + " is online.";
+            _all_messages.push_back(temp);
         }
     }); 
     msgr_client.process_responses();
@@ -53,16 +59,56 @@ void Messenger::goOnline() {
 }
 
 void Messenger::enterReceiver() {
-
+    string t;
+    cout << "\nEnter name of the receiver : " << endl ;
+    cin >> t;
+    this->_receiverName = t;
+    _all_messages.push_back("\nSending msgs to " + _receiverName);
 }
 
 void Messenger::sendMessage() {
+    json data;
+    string msg;
+    cout << "\nEnter msg: ";
+    //cin.ignore();
+    //getline(cin, msg);
+    cin >> msg;
+    data["sender"] = this->client_name;
+    data["recipient"] = this->_receiverName;
+    data["message"] = msg;
+     _all_messages.push_back("\n" + this->client_name + ": " + msg);
+    //std::cout << "client online url=" << userStatus_online << "\n";
+    msgr_client.post(sendURL, data, [this](json& response) {
+        if(response["result"] == "ok"){
+            //cout << "\npri is online." << endl;
+            //string temp = "\n" + client_name + ": " + to_string(response["message"]);
+            //_all_messages.push_back(temp);
+        }
+    }); 
+    msgr_client.process_responses();
+
+
 }
 
 void Messenger::receiveMessage() {
 
+    msgr_client.get(receiveURL, [&](json& response) {
+         if(response["result"] == "ok"){
+            std::vector< std::pair<string, string> > temp = response["messages"];
+            for (auto x : temp){
+                string sender = this->_receiverName;
+                string msg = std::get<1>(x);
+                _all_messages.push_back("\n" + sender + ": " + msg);
+            }
+        }
+    });
+    msgr_client.process_responses();
 }
 
 void Messenger::goOffline() {
 
+}
+
+vector<string> Messenger::getAllMsgs() {
+    return _all_messages;
 }

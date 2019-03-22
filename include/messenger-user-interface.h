@@ -34,6 +34,7 @@ namespace messenger {
 
         private:
         Messenger& _messenger;
+        int row,col;
 
     };
 }

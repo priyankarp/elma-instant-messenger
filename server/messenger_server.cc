@@ -39,9 +39,14 @@ int main(void)
             string sender = request["sender"];
             string recipient = request["recipient"];
             string message = request["message"];
+            result["sender"] = sender;
+            result["recipient"] = recipient;
+            result["message"] = message;
             vector< std::pair<string, string> > temp;
             if (recipientToMessages.find(recipient) != recipientToMessages.end()) {
+                
                 temp = recipientToMessages[recipient];
+
             }
            
             temp.push_back(std::make_pair(recipient, message));
@@ -74,15 +79,20 @@ int main(void)
         res.set_content(result.dump(), "json");
     });
  
-    svr.Get(R"(/get-messages/(\d+))", [&](const Request& req, Response& res) {
+    svr.Get(R"(/get-messages/(.*))", [&](const Request& req, Response& res) {
         std::cout << "Got get message request for id = " << req.matches[1] << "\n";
         json result;
         try {
             string recipient = req.matches[1];
             if (recipientToMessages.find(recipient) != recipientToMessages.end()){
                 result["messages"] = recipientToMessages[recipient];
+                result["result"] = "ok";
+                vector< std::pair<string, string> > temp;
+                recipientToMessages[recipient] = temp;
+
             } else {
                 vector<string> temp;
+                result["result"] = "error - no msgs";
                 result["messages"] = temp;
             }
         } catch(json::exception e) {
@@ -91,6 +101,7 @@ int main(void)
             res.set_content(result.dump(), "json");
             return;
         }
+       
         res.set_content(result.dump(), "json");
     });
 

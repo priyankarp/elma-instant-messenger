@@ -2,6 +2,7 @@
 #define _ELMA_MESSENGER_H
 
 #include <iostream>
+#include <string>
 
 #include "elma/elma.h" // Note installation directory for elma
 #include "online.h"
@@ -14,6 +15,7 @@
 namespace messenger {
 
     using namespace elma;  
+    using namespace std;
     //using namespace messenger;
 
     //! A stop watch class, that inherits from StateMachine
@@ -38,6 +40,10 @@ namespace messenger {
         //! Go offline
         void goOffline();
 
+        
+        //! Go offline
+        vector<string> getAllMsgs();
+
         //! Get the time stored by the stopwatch
         //high_resolution_clock::duration value();
 
@@ -49,6 +55,7 @@ namespace messenger {
         // When overriding the StateMachine class, put state declarations here.
 
         string client_name;
+        string receiveURL, userStatus_online, sendURL, userStatus_offline, _receiverName;
 
         //states
         OnlineState online;
@@ -61,12 +68,7 @@ namespace messenger {
         //Messages
         vector<string> _sent_messages;
         vector<string> _received_messages;
-
-        string _receiverName;
-        string sendURL = "http://messenger-server/post-messages";
-        string receiveURL = "http://messenger-server/get-messages/" + client_name;
-        string userStatus_online = "http://messenger-server/status/pri/true";
-        string userStatus_offline = "http://messenger-server/status/pri/false";
+        vector<string> _all_messages;
     };
 
 }

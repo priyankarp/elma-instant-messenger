@@ -9,17 +9,26 @@ UserInterface::UserInterface(Messenger& msgr) : Process("messenger"), _messenger
     timeout(1);  // Timeout for waiting for user input
     noecho();    // Do not echo user input to the screen
     curs_set(0); // Do not show the cursor
+
+    				/* to store the number of rows and *
+					 * the number of colums of the screen */
+    getmaxyx(stdscr,row,col);		/* get the number of rows and columns */
+
 };
 
 void UserInterface::show_messages(int x, int y, string msg) {
 
     // Print the time at the desired position.
-    // mvprintw just calls sprintf
-    mvprintw(x,y,"test msg" 
-        //std::chrono::duration_cast<std::chrono::minutes>(d).count(),
-        //std::chrono::duration_cast<std::chrono::seconds>(d).count()%60,
-        //(std::chrono::duration_cast<std::chrono::milliseconds>(d).count()%1000)/10
-    );
+    // mvprintw just calls sprintf  
+    int n = msg.length(); 
+  
+    // declaring character array 
+    char msg_char_array[n + 1]; 
+  
+    // copying the contents of the 
+    // string to char array 
+    strcpy(msg_char_array, msg.c_str()); 
+    mvprintw(x, y, msg_char_array);
 }
 
 void UserInterface::update() {
@@ -31,13 +40,8 @@ void UserInterface::update() {
     int c = getch();
 
     switch ( c ) {            
-        case 'n':
+        case 'o':
             emit(Event("online"));
-            break;
-        case 'e':
-            //emit(Event("send"));
-            //cin >> "
-            clear(); // Clear the screen of old stuff
             break;
         case 's':
             emit(Event("send"));
@@ -58,11 +62,11 @@ void UserInterface::update() {
 
     mvprintw(3, 1, "Follow the legend below to start using the messenger");
     //show_messages(1,1,_messenger.value()); // change .value() to .msgstring() - add this method
-    mvprintw(4,1,"online(n), enter receiver's name(e), send msg(s), receive msgs(r), offline/quit(q)");
-    /*for ( int i=0; i<_messenger.laps().size(); i++ ) {
-        //mvprintw(5+i, 1, "Lap %d", _messenger.laps().size()-i);
-        //show_messages(6+i, 10, _messenger.laps()[i]);
-    }*/
+    mvprintw(4,1,"online(o), send msg(s), receive msgs(r), offline(q)");
+    vector<string> temp = _messenger.getAllMsgs();
+    for ( int i=0; i < temp.size(); i++ ) {
+        show_messages(6+i, 20, temp[i]);
+    }
 
     // NOTE: Since the stopwatch is running every 10 ms, we should sleep
     //       the ui to give processing time back to the OS. It is debatable
