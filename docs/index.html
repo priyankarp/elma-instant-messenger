@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>My Elma Project: Main Page</title>
+<title>ECEP590 Final Project: Elma-Instant-Messenger: Main Page</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,9 +22,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Elma Project
+   <div id="projectname">ECEP590 Final Project: Elma-Instant-Messenger
    </div>
-   <div id="projectbrief">An event loop manager for embedded systems</div>
+   <div id="projectbrief">A simple instant messenger using Elma (C++). Elmaisaneventloopmanagerforembeddedsystems</div>
   </td>
  </tr>
  </tbody>
@@ -75,36 +75,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">My Elma Project Documentation</div>  </div>
+<div class="title">ECEP590 Final Project: Elma-Instant-Messenger Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>EE590 Final Project - A simple instant messenger using Elma (C++)</p>
-<p><b>Specifications of this applications are as follows: </b></p><ol type="1">
-<li>The IM communication can happen between two or more people.</li>
-<li>Only text based messeges.</li>
-<li>Connection will be established using TCP IP communication.</li>
-<li>RealTime Communication.</li>
-<li><p class="startli">No authentication required.</p>
-<p class="startli"><b>Resources to be used: </b></p>
-</li>
-</ol>
-<ol type="1">
-<li>Elma Library</li>
-<li>socket library</li>
-<li>httlib</li>
-<li>Possibly a GUI library (still researching on this) or a android simulator</li>
-</ol>
-<p><b>Personal Milestones for the project:</b></p><ol type="1">
-<li>03/12/2019 - Finalizing API for the messenger</li>
-<li>03/16/2019 - Get multiple connections working</li>
-<li>03/18/2019 - Figuring out testing strategy, writing tests</li>
-<li>03/20/2019 - Getting some GUI working</li>
-<li>03/22/2019 - Final Project submission </li>
-</ol>
+<h2>Application Specifications </h2>
+<p>The IM communication can happen between two or more people. Only text based messeges. Connection will be established using TCP IP communication. RealTime Communication. No authentication required.</p>
+<h2>Installation </h2>
+<pre class="fragment">git clone https://github.com/priyankarp/elma-instant-messenger.git
+cd elma-instant-messenger
+docker run -v $PWD:/source -it klavins/elma:latest bash
+make
+make docs
+cd server
+make
+make docs
+</pre><h2>Execution </h2>
+<p>Create a server in new terminal: ``` cd elma-instant-messenger cd server docker run &ndash;name messenger-server -v $PWD:/source -it klavins/elma:latest bash bin/messenger-server ```</p>
+<p>Create a client in new terminal: ``` cd elma-instant-messenger docker run &ndash;name client1 &ndash;link messenger-server -v $PWD:/source -it klavins/elma:latest bash bin/messenger (Enter user name. e.g. "Emma") ```</p>
+<p>Create another client in new terminal: ``` cd elma-instant-messenger docker run &ndash;name client2 &ndash;link messenger-server -v $PWD:/source -it klavins/elma:latest bash bin/messenger (Enter user name. e.g. "Jack") ```</p>
+<h2>Resources </h2>
+<p>Elma Library socket library httlib Possibly a GUI library (still researching on this) or a android simulator</p>
+<h2>Personal Milestones for the project: </h2>
+<p>03/12/2019 - Finalizing API for the messenger 03/16/2019 - Get multiple connections working 03/18/2019 - Figuring out testing strategy, writing tests 03/20/2019 - Getting some GUI working 03/22/2019 - Final Project submission </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 22 2019 04:14:14 for My Elma Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 22 2019 23:31:56 for ECEP590 Final Project: Elma-Instant-Messenger by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

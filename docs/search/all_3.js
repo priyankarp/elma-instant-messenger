@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['receivestate',['ReceiveState',['../classmessenger_1_1ReceiveState.html',1,'messenger']]],
-  ['receivestate',['ReceiveState',['../classmessenger_1_1ReceiveState.html#a6de1914a3ec254a4af837c1f8747d7db',1,'messenger::ReceiveState']]]
+  ['num_5fresponses',['num_responses',['../classmessenger_1_1MessengerClient.html#aedd68644bf7ea163c58a4463c4ba1e1d',1,'messenger::MessengerClient']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['sendstate',['SendState',['../classmessenger_1_1SendState.html#a1aff91e0d29d7176547ec132cdf80444',1,'messenger::SendState']]],
-  ['show_5fmessages',['show_messages',['../classmessenger_1_1UserInterface.html#a61565c2ce084aa670dda4224c93131ae',1,'messenger::UserInterface']]]
+  ['offlinestate',['OfflineState',['../classmessenger_1_1OfflineState.html#a1373a64dc0babde8d64198a7388bad26',1,'messenger::OfflineState']]],
+  ['onlinestate',['OnlineState',['../classmessenger_1_1OnlineState.html#a89195c8b7e2849cbeb255f16a63afa94',1,'messenger::OnlineState']]]
 ];

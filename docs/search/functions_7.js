@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['value',['value',['../classstopwatch_1_1StopWatch.html#a702d612653dcd1fc413de32707f0dbfa',1,'stopwatch::StopWatch']]]
+  ['sendmessage',['sendMessage',['../classmessenger_1_1Messenger.html#a529c4fbffcaea470bb7f79b82891afba',1,'messenger::Messenger']]],
+  ['sendstate',['SendState',['../classmessenger_1_1SendState.html#a1aff91e0d29d7176547ec132cdf80444',1,'messenger::SendState']]],
+  ['show_5fmessages',['show_messages',['../classmessenger_1_1UserInterface.html#a61565c2ce084aa670dda4224c93131ae',1,'messenger::UserInterface']]]
 ];

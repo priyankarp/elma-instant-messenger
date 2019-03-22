@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['messenger',['Messenger',['../classmessenger_1_1Messenger.html#a94fd35e990ff683c88c437e92eee8b8e',1,'messenger::Messenger::Messenger()'],['../classmessenger_1_1OfflineState.html#a7b64bfc263b3bf01a8b7f4da2ad03d0a',1,'messenger::OfflineState::messenger()'],['../classmessenger_1_1OnlineState.html#ae26f0208731a8649ad9f57511940bd8e',1,'messenger::OnlineState::messenger()'],['../classmessenger_1_1ReceiveState.html#a426150fb0b8d38373214654f5fe92380',1,'messenger::ReceiveState::messenger()'],['../classmessenger_1_1SendState.html#a6369c28ca36439b62e02813e7ff9ddfc',1,'messenger::SendState::messenger()']]]
+  ['get',['get',['../classmessenger_1_1MessengerClient.html#afff073725f65e781ac6c6d94043c3f34',1,'messenger::MessengerClient']]],
+  ['getallmsgs',['getAllMsgs',['../classmessenger_1_1Messenger.html#a14451d83378f68a58d3d585df5b13b8d',1,'messenger::Messenger']]],
+  ['gooffline',['goOffline',['../classmessenger_1_1Messenger.html#afdf1fb74de45724090385f3688b20255',1,'messenger::Messenger']]],
+  ['goonline',['goOnline',['../classmessenger_1_1Messenger.html#acfcc8fbbad17407c212f08cfe0196178',1,'messenger::Messenger']]]
 ];

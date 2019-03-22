@@ -42,11 +42,12 @@ Create a client in new terminal:
 ```
 
 Create another client in new terminal:
+```
     cd elma-instant-messenger
     docker run --name client2 --link messenger-server -v $PWD:/source -it klavins/elma:latest bash
     bin/messenger
     (Enter user name. e.g. "Jack")
-
+```
 
 Resources
 ---

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>My Elma Project: src/messenger-user-interface.cc Source File</title>
+<title>ECEP590 Final Project: Elma-Instant-Messenger: src/messenger-user-interface.cc Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,9 +22,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Elma Project
+   <div id="projectname">ECEP590 Final Project: Elma-Instant-Messenger
    </div>
-   <div id="projectbrief">An event loop manager for embedded systems</div>
+   <div id="projectbrief">A simple instant messenger using Elma (C++). Elmaisaneventloopmanagerforembeddedsystems</div>
   </td>
  </tr>
  </tbody>
@@ -98,72 +98,84 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    timeout(1);  <span class="comment">// Timeout for waiting for user input</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    noecho();    <span class="comment">// Do not echo user input to the screen</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    curs_set(0); <span class="comment">// Do not show the cursor</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;};</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classmessenger_1_1UserInterface.html#a61565c2ce084aa670dda4224c93131ae">   14</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmessenger_1_1UserInterface.html#a61565c2ce084aa670dda4224c93131ae">UserInterface::show_messages</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">string</span> msg) {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="comment">// Print the time at the desired position.</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment">// mvprintw just calls sprintf</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    mvprintw(x,y,<span class="stringliteral">&quot;test msg&quot;</span> </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="comment">//std::chrono::duration_cast&lt;std::chrono::minutes&gt;(d).count(),</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="comment">//std::chrono::duration_cast&lt;std::chrono::seconds&gt;(d).count()%60,</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="comment">//(std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(d).count()%1000)/10</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    );</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classmessenger_1_1UserInterface.html#a7c9acd9ad089bbd6d0ca371a14cd82fa">   25</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmessenger_1_1UserInterface.html#a7c9acd9ad089bbd6d0ca371a14cd82fa">UserInterface::update</a>() {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">// USER INPUT</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">// get a character from the user, if one is ready.</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">// If no character is ready, getch() returns ERR (which is</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">// ignored below since there is no condition in the switch statement)</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">int</span> c = getch();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">switch</span> ( c ) {            </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;n&#39;</span>:</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            emit(Event(<span class="stringliteral">&quot;online&quot;</span>));</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;s&#39;</span>:</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            emit(Event(<span class="stringliteral">&quot;send&quot;</span>));</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            clear(); <span class="comment">// Clear the screen of old stuff</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;r&#39;</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            emit(Event(<span class="stringliteral">&quot;receive&quot;</span>));</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;q&#39;</span>:</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;halting\n&quot;</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            emit(Event(<span class="stringliteral">&quot;offline&quot;</span>));</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            halt();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// OUTPUT</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">//show_messages(1,1,_messenger.value()); // change .value() to .msgstring() - add this method</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    mvprintw(3,1,<span class="stringliteral">&quot;online(n), send(s), receive(r), offline/quit(q)&quot;</span>);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">/*for ( int i=0; i&lt;_messengerClient.laps().size(); i++ ) {</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">        mvprintw(5+i, 1, &quot;Lap %d&quot;, _messengerClient.laps().size()-i);</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">        show_messages(5+i, 10, _messengerClient.laps()[i]);</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">    }*/</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                    <span class="comment">/* to store the number of rows and *</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">                     * the number of colums of the screen */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    getmaxyx(stdscr,row,col);       <span class="comment">/* get the number of rows and columns */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classmessenger_1_1UserInterface.html#a61565c2ce084aa670dda4224c93131ae">   19</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmessenger_1_1UserInterface.html#a61565c2ce084aa670dda4224c93131ae">UserInterface::show_messages</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">string</span> msg) {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="comment">// Print the time at the desired position.</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="comment">// mvprintw just calls sprintf  </span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">int</span> n = msg.length(); </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">// declaring character array </span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">char</span> msg_char_array[n + 1]; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">// copying the contents of the </span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">// string to char array </span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    strcpy(msg_char_array, msg.c_str()); </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    mvprintw(x, y, msg_char_array);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classmessenger_1_1UserInterface.html#a7c9acd9ad089bbd6d0ca371a14cd82fa">   34</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmessenger_1_1UserInterface.html#a7c9acd9ad089bbd6d0ca371a14cd82fa">UserInterface::update</a>() {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">// USER INPUT</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// get a character from the user, if one is ready.</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// If no character is ready, getch() returns ERR (which is</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// ignored below since there is no condition in the switch statement)</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">int</span> c = getch();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">switch</span> ( c ) {            </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;o&#39;</span>:</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            emit(Event(<span class="stringliteral">&quot;online&quot;</span>));</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;s&#39;</span>:</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            emit(Event(<span class="stringliteral">&quot;send&quot;</span>));</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            clear(); <span class="comment">// Clear the screen of old stuff</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;r&#39;</span>:</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            emit(Event(<span class="stringliteral">&quot;receive&quot;</span>));</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;q&#39;</span>:</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;halting\n&quot;</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            emit(Event(<span class="stringliteral">&quot;offline&quot;</span>));</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            halt();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// NOTE: Since the stopwatch is running every 10 ms, we should sleep</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="comment">//       the ui to give processing time back to the OS. It is debatable</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">//       whether this is the right place to put this. It could also become</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">//       an Elma feature, or it could go in the StopWatch class, etc.</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">//       The number 9999 should also be a parameter and not a constant.</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    usleep(9999);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
-<div class="ttc" id="classmessenger_1_1UserInterface_html_a61565c2ce084aa670dda4224c93131ae"><div class="ttname"><a href="classmessenger_1_1UserInterface.html#a61565c2ce084aa670dda4224c93131ae">messenger::UserInterface::show_messages</a></div><div class="ttdeci">void show_messages(int x, int y, string msg)</div><div class="ttdoc">Display the messeges from all clients on the screen. </div><div class="ttdef"><b>Definition:</b> <a href="messenger-user-interface_8cc_source.html#l00014">messenger-user-interface.cc:14</a></div></div>
-<div class="ttc" id="classmessenger_1_1Messenger_html"><div class="ttname"><a href="classmessenger_1_1Messenger.html">messenger::Messenger</a></div><div class="ttdoc">A stop watch class, that inherits from StateMachine. </div><div class="ttdef"><b>Definition:</b> <a href="messenger_8h_source.html#l00018">messenger.h:18</a></div></div>
-<div class="ttc" id="classmessenger_1_1UserInterface_html_a7c9acd9ad089bbd6d0ca371a14cd82fa"><div class="ttname"><a href="classmessenger_1_1UserInterface.html#a7c9acd9ad089bbd6d0ca371a14cd82fa">messenger::UserInterface::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">Update the user interface by (a) reading keyboard input and (b) writing to the screen. </div><div class="ttdef"><b>Definition:</b> <a href="messenger-user-interface_8cc_source.html#l00025">messenger-user-interface.cc:25</a></div></div>
-<div class="ttc" id="namespacemessenger_html"><div class="ttname"><a href="namespacemessenger.html">messenger</a></div><div class="ttdef"><b>Definition:</b> <a href="messenger-user-interface_8h_source.html#l00008">messenger-user-interface.h:8</a></div></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// OUTPUT</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    mvprintw(1, 1, <span class="stringliteral">&quot;Welcome to Elma-Instant-Messenger&quot;</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    mvprintw(3, 1, <span class="stringliteral">&quot;Follow the legend below to start using the messenger&quot;</span>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">//show_messages(1,1,_messenger.value()); // change .value() to .msgstring() - add this method</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    mvprintw(4,1,<span class="stringliteral">&quot;online(o), send msg(s), receive msgs(r), offline(q)&quot;</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    vector&lt;string&gt; temp = _messenger.<a class="code" href="classmessenger_1_1Messenger.html#a14451d83378f68a58d3d585df5b13b8d">getAllMsgs</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i=0; i &lt; temp.size(); i++ ) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="classmessenger_1_1UserInterface.html#a61565c2ce084aa670dda4224c93131ae">show_messages</a>(6+i, 20, temp[i]);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">// NOTE: Since the stopwatch is running every 10 ms, we should sleep</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">//       the ui to give processing time back to the OS. It is debatable</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">//       whether this is the right place to put this. It could also become</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">//       an Elma feature, or it could go in the StopWatch class, etc.</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">//       The number 9999 should also be a parameter and not a constant.</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    usleep(9999);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="ttc" id="classmessenger_1_1Messenger_html_a14451d83378f68a58d3d585df5b13b8d"><div class="ttname"><a href="classmessenger_1_1Messenger.html#a14451d83378f68a58d3d585df5b13b8d">messenger::Messenger::getAllMsgs</a></div><div class="ttdeci">vector&lt; string &gt; getAllMsgs()</div><div class="ttdoc">Go offline. </div><div class="ttdef"><b>Definition:</b> <a href="messenger_8cc_source.html#l00112">messenger.cc:112</a></div></div>
+<div class="ttc" id="classmessenger_1_1UserInterface_html_a61565c2ce084aa670dda4224c93131ae"><div class="ttname"><a href="classmessenger_1_1UserInterface.html#a61565c2ce084aa670dda4224c93131ae">messenger::UserInterface::show_messages</a></div><div class="ttdeci">void show_messages(int x, int y, string msg)</div><div class="ttdoc">Display the messeges from all clients on the screen. </div><div class="ttdef"><b>Definition:</b> <a href="messenger-user-interface_8cc_source.html#l00019">messenger-user-interface.cc:19</a></div></div>
+<div class="ttc" id="classmessenger_1_1Messenger_html"><div class="ttname"><a href="classmessenger_1_1Messenger.html">messenger::Messenger</a></div><div class="ttdoc">A stop watch class, that inherits from StateMachine. </div><div class="ttdef"><b>Definition:</b> <a href="messenger_8h_source.html#l00022">messenger.h:22</a></div></div>
+<div class="ttc" id="classmessenger_1_1UserInterface_html_a7c9acd9ad089bbd6d0ca371a14cd82fa"><div class="ttname"><a href="classmessenger_1_1UserInterface.html#a7c9acd9ad089bbd6d0ca371a14cd82fa">messenger::UserInterface::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">Update the user interface by (a) reading keyboard input and (b) writing to the screen. </div><div class="ttdef"><b>Definition:</b> <a href="messenger-user-interface_8cc_source.html#l00034">messenger-user-interface.cc:34</a></div></div>
+<div class="ttc" id="namespacemessenger_html"><div class="ttname"><a href="namespacemessenger.html">messenger</a></div><div class="ttdef"><b>Definition:</b> <a href="messenger-client_8cc_source.html#l00009">messenger-client.cc:9</a></div></div>
 <div class="ttc" id="classmessenger_1_1UserInterface_html_a0ac405dde441157265bdd04c23b0873d"><div class="ttname"><a href="classmessenger_1_1UserInterface.html#a0ac405dde441157265bdd04c23b0873d">messenger::UserInterface::UserInterface</a></div><div class="ttdeci">UserInterface(Messenger &amp;messenger)</div><div class="ttdef"><b>Definition:</b> <a href="messenger-user-interface_8cc_source.html#l00007">messenger-user-interface.cc:7</a></div></div>
 <div class="ttc" id="namespaceelma_html"><div class="ttname"><a href="namespaceelma.html">elma</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 22 2019 04:14:13 for My Elma Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 22 2019 23:31:55 for ECEP590 Final Project: Elma-Instant-Messenger by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
