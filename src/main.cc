@@ -4,7 +4,7 @@
 #include <ncurses.h>
 
 #include "messenger.h"
-#include "messenger-user-interface.h"
+//#include "messenger-user-interface.h"
 
 using namespace std::chrono;
 using namespace elma;
@@ -31,5 +31,7 @@ int main() {
      .run();
 
     endwin();     
+
+
      
 }

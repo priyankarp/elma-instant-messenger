@@ -5,7 +5,7 @@
 
 using namespace std::chrono;
 using namespace elma;
-//using namespace messenger;
+using namespace messenger;
 
 Messenger::Messenger(string name) : StateMachine(name) {
 

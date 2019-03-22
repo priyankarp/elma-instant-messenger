@@ -1,5 +1,5 @@
-#ifndef _MSG_CLIENT_H
-#define _MSG_CLIENT_H
+#ifndef _ELMA_MSG_CLIENT_H
+#define _ELMA_MSG_CLIENT_H
 
 #define CPPHTTPLIB_OPENSSL_SUPPORT
 #include "httplib/httplib.h"

@@ -3,62 +3,24 @@
 
 #include "elma/elma.h" // Note installation directory for elma
 
+#include "online.h"
+#include "offline.h"
+#include "receive.h"
+#include "send.h"
 #include "messenger-user-interface.h"
 #include "messenger-client.h"
 
-namespace messenger{
+namespace messenger {
+
     using namespace elma;  
-    using namespace messenger;  
-
-    class OnlineState : public State {
-        public:
-        OnlineState() : State("User online") {}
-        void entry(const Event& e) {}
-        void during() {} 
-        void exit(const Event& e) {
-            //emit(Event("off"));
-        }
-    };
-
-
-    class OfflineState : public State {
-        public:
-        OfflineState() : State("User offline") {}
-        void entry(const Event& e) {}
-        void during() {} 
-        void exit(const Event& e) {
-            //emit(Event("off"));
-        }
-    };
-
-    class SendState : public State {
-        public:
-        SendState() : State("Sending msg") {}
-        void entry(const Event& e) {}
-        void during() {} 
-        void exit(const Event& e) {
-            //emit(Event("off"));
-        }
-    };
-
-    class ReceiveState : public State {
-        public:
-        ReceiveState() : State("Receiving msgs") {}
-        void entry(const Event& e) {}
-        void during() {} 
-        void exit(const Event& e) {
-            //emit(Event("off"));
-        }
-    };
+    //using namespace messenger;
 
     //! A stop watch class, that inherits from StateMachine
     class Messenger : public StateMachine {
 
         public:
         //! Make a new stopwatch
-        Messenger(string name){
-            client_name = name;
-        }
+        Messenger(string name);
 
         /*//! Start the stopwatch
         void begin();
@@ -81,24 +43,16 @@ namespace messenger{
         private:
 
         // When overriding the StateMachine class, put state declarations here.
-        //OnState on;
-        //OffState off;
+
         string client_name;
 
         //states
         OnlineState online;
         OfflineState offline;
-        SendState send;
+        SendState sending;
         ReceiveState receive;
 
         MessengerClient myClient; //(client_name);
-
-        /*// Other private variables
-        bool _running;
-        high_resolution_clock::time_point _start_time;
-        high_resolution_clock::duration _elapsed;
-        vector<high_resolution_clock::duration> _laps;*/
-
     };
 
 }

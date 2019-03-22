@@ -13,10 +13,10 @@ void UserInterface::show_messeges(int x, int y, string msg) {
 
     // Print the time at the desired position.
     // mvprintw just calls sprintf
-    mvprintw(x,y,"%d:%02d:%02d", 
-        std::chrono::duration_cast<std::chrono::minutes>(d).count(),
-        std::chrono::duration_cast<std::chrono::seconds>(d).count()%60,
-        (std::chrono::duration_cast<std::chrono::milliseconds>(d).count()%1000)/10
+    mvprintw(x,y,"test msg", 
+        //std::chrono::duration_cast<std::chrono::minutes>(d).count(),
+        //std::chrono::duration_cast<std::chrono::seconds>(d).count()%60,
+        //(std::chrono::duration_cast<std::chrono::milliseconds>(d).count()%1000)/10
     );
 }
 
@@ -46,12 +46,13 @@ void UserInterface::update() {
     }
 
     // OUTPUT
-    show_messages(1,1,_messenger.value()); // change .value() to .msgstring() - add this method
+    
+    //show_messages(1,1,_messenger.value()); // change .value() to .msgstring() - add this method
     mvprintw(3,1,"online(n), send(s), receive(r), offline/quit(q)");
-    for ( int i=0; i<_messengerClient.laps().size(); i++ ) {
+    /*for ( int i=0; i<_messengerClient.laps().size(); i++ ) {
         mvprintw(5+i, 1, "Lap %d", _messengerClient.laps().size()-i);
         show_messages(5+i, 10, _messengerClient.laps()[i]);
-    }
+    }*/
 
     // NOTE: Since the stopwatch is running every 10 ms, we should sleep
     //       the ui to give processing time back to the OS. It is debatable

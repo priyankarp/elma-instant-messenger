@@ -20,7 +20,7 @@ namespace messenger {
 
         //! Create a new stopwatch user interface using curses
         //! \param sw A reference to a Messenger object
-        UserInterface(Messenger& msgr);
+        UserInterface(Messenger& messenger);
 
         void init() {}
         void start() {}
