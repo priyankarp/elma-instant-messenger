@@ -24,7 +24,7 @@ Installation
 
 Execution
 ---
-To run the messenger for simulation purpose, we need three terminal windows - one for the server and two for two messenger clients/users.
+
 Create a server in new terminal:
     cd elma-instant-messenger
     cd server
