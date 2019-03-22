@@ -26,16 +26,20 @@ Execution
 ---
 
 Create a server in new terminal:
+```
     cd elma-instant-messenger
     cd server
     docker run --name messenger-server -v $PWD:/source -it klavins/elma:latest bash
     bin/messenger-server
+```
 
 Create a client in new terminal:
+```
     cd elma-instant-messenger
     docker run --name client1 --link messenger-server -v $PWD:/source -it klavins/elma:latest bash
     bin/messenger
     (Enter user name. e.g. "Emma")
+```
 
 Create another client in new terminal:
     cd elma-instant-messenger
