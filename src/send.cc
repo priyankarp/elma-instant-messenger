@@ -11,9 +11,8 @@ using namespace messenger;
 Messenger& SendState::messenger() { return (Messenger&) state_machine(); }
 
 void SendState::entry(const Event& e) {
+    messenger().receiveMessage();
     messenger().sendMessage();
-    //messenger().receiveMessage();
-
 }
 
 void SendState::exit(const Event& e) {

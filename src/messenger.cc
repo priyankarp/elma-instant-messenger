@@ -46,7 +46,6 @@ Messenger::Messenger(string name) : StateMachine(name) {
 
 void Messenger::goOnline() {
     json data = "x : 12";
-    //std::cout << "client online url=" << userStatus_online << "\n";
     msgr_client.post(userStatus_online, data, [this](json& response) {
         if(response["result"] == "ok"){
             //cout << "\npri is online." << endl;
@@ -55,7 +54,6 @@ void Messenger::goOnline() {
         }
     }); 
     msgr_client.process_responses();
-    //msgr_client.post()
 }
 
 void Messenger::enterReceiver() {
@@ -77,17 +75,11 @@ void Messenger::sendMessage() {
     data["recipient"] = this->_receiverName;
     data["message"] = msg;
      _all_messages.push_back("\n" + this->client_name + ": " + msg);
-    //std::cout << "client online url=" << userStatus_online << "\n";
     msgr_client.post(sendURL, data, [this](json& response) {
         if(response["result"] == "ok"){
-            //cout << "\npri is online." << endl;
-            //string temp = "\n" + client_name + ": " + to_string(response["message"]);
-            //_all_messages.push_back(temp);
         }
     }); 
     msgr_client.process_responses();
-
-
 }
 
 void Messenger::receiveMessage() {
@@ -106,7 +98,15 @@ void Messenger::receiveMessage() {
 }
 
 void Messenger::goOffline() {
-
+    json data = "x : 12";
+    msgr_client.post(userStatus_offline, data, [this](json& response) {
+        if(response["result"] == "ok"){
+            //cout << "\npri is online." << endl;
+            string temp = "\n" + client_name + " is offline.";
+            _all_messages.push_back(temp);
+        }
+    }); 
+    msgr_client.process_responses();
 }
 
 vector<string> Messenger::getAllMsgs() {

@@ -51,8 +51,14 @@ Create another client in new terminal:
 
 Screenshot
 ===
+
+Two client terminals will look something like this - 
+
 ![Screenshot](screenshots/two-chat-windows.PNG)
 
+Server terminal will look something like this -
+
+![Screenshot](screenshots/server-msgs.PNG)
 Resources
 ---
 Elma Library

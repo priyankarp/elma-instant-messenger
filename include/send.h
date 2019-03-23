@@ -9,18 +9,18 @@ namespace messenger {
     using namespace elma;
 
     class Messenger; // Declare containing class so it can be refered to here
-                     // before it is defined in stopwatch.h
+                     // before it is defined in messenger.h
 
-    //! A State class to represen the state in which the stopwatch is off
+    //! A State class to represen the state in which the messenger is sending state
     class SendState : public State {
 
         public:
-        //! Construct a new off state
+        //! Construct a new Send state
         SendState() : State("Sending msg") {}
         void entry(const Event& e);
         void during() {} 
         
-        //! Perform actions required when switching from off to on
+        //! Perform actions required when switching from Send to other
         //! \param e The event that triggered the transition
         void exit(const Event& e);
 

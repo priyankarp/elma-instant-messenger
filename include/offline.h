@@ -11,7 +11,7 @@ namespace messenger {
     class Messenger; // Declare containing class so it can be refered to here
                      // before it is defined in stopwatch.h
 
-    //! A State class to represen the state in which the stopwatch is off
+    //! A State class to represen the state in which the messenger is offline
     class OfflineState : public State {
 
         public:
