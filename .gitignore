@@ -1,5 +1,7 @@
 doxygen_sqlite3.db
 bin/
+.vscode/
+.vs/
 examples/bin
 build/
 tmp/
@@ -7,4 +9,3 @@ tmp/
 *.a
 .DS_Store
 *.o
-.vscode/
