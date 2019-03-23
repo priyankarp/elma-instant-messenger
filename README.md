@@ -49,6 +49,10 @@ Create another client in new terminal:
     (Enter user name. e.g. "Jack")
 ```
 
+Screenshot
+===
+![Screenshot](screenshots/two-chat-windows.PNG)
+
 Resources
 ---
 Elma Library
