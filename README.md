@@ -7,11 +7,11 @@ State Machine diagram -
 
 Application Specifications
 ---
-The IM communication can happen between two or more people.
-Only text based messeges.
-Connection will be established using TCP IP communication.
-RealTime Communication.
-No authentication required.
+1. The IM communication can happen between two or more people.
+2. Only text based messeges.
+3. Connection will be established using TCP IP communication.
+4. RealTime Communication.
+5. No authentication required.
 
 Installation
 ---
@@ -72,8 +72,8 @@ Possibly a GUI library (still researching on this) or a android simulator
 
 Personal Milestones for the project:
 ---
-03/12/2019 - Finalizing API for the messenger 
-03/16/2019 - Get multiple connections working 
-03/18/2019 - Figuring out testing strategy, writing tests
-03/20/2019 - Getting some GUI working
-03/22/2019 - Final Project submission
+1. 03/12/2019 - Finalizing API for the messenger 
+2. 03/16/2019 - Get multiple connections working 
+3. 03/18/2019 - Figuring out testing strategy, writing tests
+4. 03/20/2019 - Getting some GUI working
+5. 03/22/2019 - Final Project submission
