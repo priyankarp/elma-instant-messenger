@@ -135,67 +135,67 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
 <div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classmessenger_1_1Messenger.html#acfcc8fbbad17407c212f08cfe0196178">   47</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmessenger_1_1Messenger.html#acfcc8fbbad17407c212f08cfe0196178">Messenger::goOnline</a>() {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    json data = <span class="stringliteral">&quot;x : 12&quot;</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">//std::cout &lt;&lt; &quot;client online url=&quot; &lt;&lt; userStatus_online &lt;&lt; &quot;\n&quot;;</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    msgr_client.post(userStatus_online, data, [<span class="keyword">this</span>](json&amp; response) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span>(response[<span class="stringliteral">&quot;result&quot;</span>] == <span class="stringliteral">&quot;ok&quot;</span>){</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="comment">//cout &lt;&lt; &quot;\npri is online.&quot; &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordtype">string</span> temp = <span class="stringliteral">&quot;\n&quot;</span> + client_name + <span class="stringliteral">&quot; is online.&quot;</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            _all_messages.push_back(temp);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }); </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    msgr_client.<a class="code" href="classmessenger_1_1MessengerClient.html#a842a2e3dda8a6e11b1c0eee7f0af5836">process_responses</a>();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">//msgr_client.post()</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classmessenger_1_1Messenger.html#a6d675d5b2849fa7548cb9fa317fc1a74">   61</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmessenger_1_1Messenger.html#a6d675d5b2849fa7548cb9fa317fc1a74">Messenger::enterReceiver</a>() {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">string</span> t;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;\nEnter name of the receiver : &quot;</span> &lt;&lt; endl ;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    cin &gt;&gt; t;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    this-&gt;_receiverName = t;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    _all_messages.push_back(<span class="stringliteral">&quot;\nSending msgs to &quot;</span> + _receiverName);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classmessenger_1_1Messenger.html#a529c4fbffcaea470bb7f79b82891afba">   69</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmessenger_1_1Messenger.html#a529c4fbffcaea470bb7f79b82891afba">Messenger::sendMessage</a>() {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    json data;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">string</span> msg;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;\nEnter msg: &quot;</span>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">//cin.ignore();</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">//getline(cin, msg);</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    cin &gt;&gt; msg;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    data[<span class="stringliteral">&quot;sender&quot;</span>] = this-&gt;client_name;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    data[<span class="stringliteral">&quot;recipient&quot;</span>] = this-&gt;_receiverName;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    data[<span class="stringliteral">&quot;message&quot;</span>] = msg;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;     _all_messages.push_back(<span class="stringliteral">&quot;\n&quot;</span> + this-&gt;client_name + <span class="stringliteral">&quot;: &quot;</span> + msg);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">//std::cout &lt;&lt; &quot;client online url=&quot; &lt;&lt; userStatus_online &lt;&lt; &quot;\n&quot;;</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    msgr_client.post(sendURL, data, [<span class="keyword">this</span>](json&amp; response) {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">if</span>(response[<span class="stringliteral">&quot;result&quot;</span>] == <span class="stringliteral">&quot;ok&quot;</span>){</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="comment">//cout &lt;&lt; &quot;\npri is online.&quot; &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="comment">//string temp = &quot;\n&quot; + client_name + &quot;: &quot; + to_string(response[&quot;message&quot;]);</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="comment">//_all_messages.push_back(temp);</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }); </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    msgr_client.<a class="code" href="classmessenger_1_1MessengerClient.html#a842a2e3dda8a6e11b1c0eee7f0af5836">process_responses</a>();</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="classmessenger_1_1Messenger.html#a6f3c8fd11fdd48051f89edc01e3538b7">   93</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmessenger_1_1Messenger.html#a6f3c8fd11fdd48051f89edc01e3538b7">Messenger::receiveMessage</a>() {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    msgr_client.<a class="code" href="classmessenger_1_1MessengerClient.html#afff073725f65e781ac6c6d94043c3f34">get</a>(receiveURL, [&amp;](json&amp; response) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;         <span class="keywordflow">if</span>(response[<span class="stringliteral">&quot;result&quot;</span>] == <span class="stringliteral">&quot;ok&quot;</span>){</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            std::vector&lt; std::pair&lt;string, string&gt; &gt; temp = response[<span class="stringliteral">&quot;messages&quot;</span>];</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> x : temp){</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <span class="keywordtype">string</span> sender = this-&gt;_receiverName;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                <span class="keywordtype">string</span> msg = std::get&lt;1&gt;(x);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                _all_messages.push_back(<span class="stringliteral">&quot;\n&quot;</span> + sender + <span class="stringliteral">&quot;: &quot;</span> + msg);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    });</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    msgr_client.<a class="code" href="classmessenger_1_1MessengerClient.html#a842a2e3dda8a6e11b1c0eee7f0af5836">process_responses</a>();</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="classmessenger_1_1Messenger.html#afdf1fb74de45724090385f3688b20255">  108</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmessenger_1_1Messenger.html#afdf1fb74de45724090385f3688b20255">Messenger::goOffline</a>() {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    msgr_client.post(userStatus_online, data, [<span class="keyword">this</span>](json&amp; response) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">if</span>(response[<span class="stringliteral">&quot;result&quot;</span>] == <span class="stringliteral">&quot;ok&quot;</span>){</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="comment">//cout &lt;&lt; &quot;\npri is online.&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordtype">string</span> temp = <span class="stringliteral">&quot;\n&quot;</span> + client_name + <span class="stringliteral">&quot; is online.&quot;</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            _all_messages.push_back(temp);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }); </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    msgr_client.<a class="code" href="classmessenger_1_1MessengerClient.html#a842a2e3dda8a6e11b1c0eee7f0af5836">process_responses</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classmessenger_1_1Messenger.html#a6d675d5b2849fa7548cb9fa317fc1a74">   59</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmessenger_1_1Messenger.html#a6d675d5b2849fa7548cb9fa317fc1a74">Messenger::enterReceiver</a>() {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">string</span> t;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;\nEnter name of the receiver : &quot;</span> &lt;&lt; endl ;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    cin &gt;&gt; t;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    this-&gt;_receiverName = t;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    _all_messages.push_back(<span class="stringliteral">&quot;\nSending msgs to &quot;</span> + _receiverName);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classmessenger_1_1Messenger.html#a529c4fbffcaea470bb7f79b82891afba">   67</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmessenger_1_1Messenger.html#a529c4fbffcaea470bb7f79b82891afba">Messenger::sendMessage</a>() {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    json data;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">string</span> msg;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;\nEnter msg: &quot;</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">//cin.ignore();</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">//getline(cin, msg);</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    cin &gt;&gt; msg;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    data[<span class="stringliteral">&quot;sender&quot;</span>] = this-&gt;client_name;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    data[<span class="stringliteral">&quot;recipient&quot;</span>] = this-&gt;_receiverName;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    data[<span class="stringliteral">&quot;message&quot;</span>] = msg;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;     _all_messages.push_back(<span class="stringliteral">&quot;\n&quot;</span> + this-&gt;client_name + <span class="stringliteral">&quot;: &quot;</span> + msg);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    msgr_client.post(sendURL, data, [<span class="keyword">this</span>](json&amp; response) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">if</span>(response[<span class="stringliteral">&quot;result&quot;</span>] == <span class="stringliteral">&quot;ok&quot;</span>){</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }); </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    msgr_client.<a class="code" href="classmessenger_1_1MessengerClient.html#a842a2e3dda8a6e11b1c0eee7f0af5836">process_responses</a>();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="classmessenger_1_1Messenger.html#a6f3c8fd11fdd48051f89edc01e3538b7">   85</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmessenger_1_1Messenger.html#a6f3c8fd11fdd48051f89edc01e3538b7">Messenger::receiveMessage</a>() {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    msgr_client.<a class="code" href="classmessenger_1_1MessengerClient.html#afff073725f65e781ac6c6d94043c3f34">get</a>(receiveURL, [&amp;](json&amp; response) {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;         <span class="keywordflow">if</span>(response[<span class="stringliteral">&quot;result&quot;</span>] == <span class="stringliteral">&quot;ok&quot;</span>){</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            std::vector&lt; std::pair&lt;string, string&gt; &gt; temp = response[<span class="stringliteral">&quot;messages&quot;</span>];</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> x : temp){</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <span class="keywordtype">string</span> sender = this-&gt;_receiverName;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="keywordtype">string</span> msg = std::get&lt;1&gt;(x);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                _all_messages.push_back(<span class="stringliteral">&quot;\n&quot;</span> + sender + <span class="stringliteral">&quot;: &quot;</span> + msg);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    });</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    msgr_client.<a class="code" href="classmessenger_1_1MessengerClient.html#a842a2e3dda8a6e11b1c0eee7f0af5836">process_responses</a>();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="classmessenger_1_1Messenger.html#afdf1fb74de45724090385f3688b20255">  100</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmessenger_1_1Messenger.html#afdf1fb74de45724090385f3688b20255">Messenger::goOffline</a>() {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    json data = <span class="stringliteral">&quot;x : 12&quot;</span>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    msgr_client.post(userStatus_offline, data, [<span class="keyword">this</span>](json&amp; response) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">if</span>(response[<span class="stringliteral">&quot;result&quot;</span>] == <span class="stringliteral">&quot;ok&quot;</span>){</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="comment">//cout &lt;&lt; &quot;\npri is online.&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordtype">string</span> temp = <span class="stringliteral">&quot;\n&quot;</span> + client_name + <span class="stringliteral">&quot; is offline.&quot;</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            _all_messages.push_back(temp);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    }); </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    msgr_client.<a class="code" href="classmessenger_1_1MessengerClient.html#a842a2e3dda8a6e11b1c0eee7f0af5836">process_responses</a>();</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
 <div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="classmessenger_1_1Messenger.html#a14451d83378f68a58d3d585df5b13b8d">  112</a></span>&#160;vector&lt;string&gt; <a class="code" href="classmessenger_1_1Messenger.html#a14451d83378f68a58d3d585df5b13b8d">Messenger::getAllMsgs</a>() {</div>
@@ -204,11 +204,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="classmessenger_1_1MessengerClient_html_afff073725f65e781ac6c6d94043c3f34"><div class="ttname"><a href="classmessenger_1_1MessengerClient.html#afff073725f65e781ac6c6d94043c3f34">messenger::MessengerClient::get</a></div><div class="ttdeci">MessengerClient &amp; get(std::string url, std::function&lt; void(json &amp;)&gt; handler)</div><div class="ttdef"><b>Definition:</b> <a href="messenger-client_8cc_source.html#l00034">messenger-client.cc:34</a></div></div>
 <div class="ttc" id="classmessenger_1_1Messenger_html_a14451d83378f68a58d3d585df5b13b8d"><div class="ttname"><a href="classmessenger_1_1Messenger.html#a14451d83378f68a58d3d585df5b13b8d">messenger::Messenger::getAllMsgs</a></div><div class="ttdeci">vector&lt; string &gt; getAllMsgs()</div><div class="ttdoc">Go offline. </div><div class="ttdef"><b>Definition:</b> <a href="messenger_8cc_source.html#l00112">messenger.cc:112</a></div></div>
 <div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
-<div class="ttc" id="classmessenger_1_1Messenger_html_a6f3c8fd11fdd48051f89edc01e3538b7"><div class="ttname"><a href="classmessenger_1_1Messenger.html#a6f3c8fd11fdd48051f89edc01e3538b7">messenger::Messenger::receiveMessage</a></div><div class="ttdeci">void receiveMessage()</div><div class="ttdoc">Receive messages. </div><div class="ttdef"><b>Definition:</b> <a href="messenger_8cc_source.html#l00093">messenger.cc:93</a></div></div>
-<div class="ttc" id="classmessenger_1_1Messenger_html_a6d675d5b2849fa7548cb9fa317fc1a74"><div class="ttname"><a href="classmessenger_1_1Messenger.html#a6d675d5b2849fa7548cb9fa317fc1a74">messenger::Messenger::enterReceiver</a></div><div class="ttdeci">void enterReceiver()</div><div class="ttdoc">Enter receivers user-name. </div><div class="ttdef"><b>Definition:</b> <a href="messenger_8cc_source.html#l00061">messenger.cc:61</a></div></div>
-<div class="ttc" id="classmessenger_1_1Messenger_html_afdf1fb74de45724090385f3688b20255"><div class="ttname"><a href="classmessenger_1_1Messenger.html#afdf1fb74de45724090385f3688b20255">messenger::Messenger::goOffline</a></div><div class="ttdeci">void goOffline()</div><div class="ttdoc">Go offline. </div><div class="ttdef"><b>Definition:</b> <a href="messenger_8cc_source.html#l00108">messenger.cc:108</a></div></div>
+<div class="ttc" id="classmessenger_1_1Messenger_html_a6f3c8fd11fdd48051f89edc01e3538b7"><div class="ttname"><a href="classmessenger_1_1Messenger.html#a6f3c8fd11fdd48051f89edc01e3538b7">messenger::Messenger::receiveMessage</a></div><div class="ttdeci">void receiveMessage()</div><div class="ttdoc">Receive messages. </div><div class="ttdef"><b>Definition:</b> <a href="messenger_8cc_source.html#l00085">messenger.cc:85</a></div></div>
+<div class="ttc" id="classmessenger_1_1Messenger_html_a6d675d5b2849fa7548cb9fa317fc1a74"><div class="ttname"><a href="classmessenger_1_1Messenger.html#a6d675d5b2849fa7548cb9fa317fc1a74">messenger::Messenger::enterReceiver</a></div><div class="ttdeci">void enterReceiver()</div><div class="ttdoc">Enter receivers user-name. </div><div class="ttdef"><b>Definition:</b> <a href="messenger_8cc_source.html#l00059">messenger.cc:59</a></div></div>
+<div class="ttc" id="classmessenger_1_1Messenger_html_afdf1fb74de45724090385f3688b20255"><div class="ttname"><a href="classmessenger_1_1Messenger.html#afdf1fb74de45724090385f3688b20255">messenger::Messenger::goOffline</a></div><div class="ttdeci">void goOffline()</div><div class="ttdoc">Go offline. </div><div class="ttdef"><b>Definition:</b> <a href="messenger_8cc_source.html#l00100">messenger.cc:100</a></div></div>
 <div class="ttc" id="namespacestd_1_1chrono_html"><div class="ttname"><a href="namespacestd_1_1chrono.html">chrono</a></div></div>
-<div class="ttc" id="classmessenger_1_1Messenger_html_a529c4fbffcaea470bb7f79b82891afba"><div class="ttname"><a href="classmessenger_1_1Messenger.html#a529c4fbffcaea470bb7f79b82891afba">messenger::Messenger::sendMessage</a></div><div class="ttdeci">void sendMessage()</div><div class="ttdoc">send messages </div><div class="ttdef"><b>Definition:</b> <a href="messenger_8cc_source.html#l00069">messenger.cc:69</a></div></div>
+<div class="ttc" id="classmessenger_1_1Messenger_html_a529c4fbffcaea470bb7f79b82891afba"><div class="ttname"><a href="classmessenger_1_1Messenger.html#a529c4fbffcaea470bb7f79b82891afba">messenger::Messenger::sendMessage</a></div><div class="ttdeci">void sendMessage()</div><div class="ttdoc">send messages </div><div class="ttdef"><b>Definition:</b> <a href="messenger_8cc_source.html#l00067">messenger.cc:67</a></div></div>
 <div class="ttc" id="namespacemessenger_html"><div class="ttname"><a href="namespacemessenger.html">messenger</a></div><div class="ttdef"><b>Definition:</b> <a href="messenger-client_8cc_source.html#l00009">messenger-client.cc:9</a></div></div>
 <div class="ttc" id="classmessenger_1_1MessengerClient_html_a842a2e3dda8a6e11b1c0eee7f0af5836"><div class="ttname"><a href="classmessenger_1_1MessengerClient.html#a842a2e3dda8a6e11b1c0eee7f0af5836">messenger::MessengerClient::process_responses</a></div><div class="ttdeci">MessengerClient &amp; process_responses()</div><div class="ttdef"><b>Definition:</b> <a href="messenger-client_8cc_source.html#l00047">messenger-client.cc:47</a></div></div>
 <div class="ttc" id="classmessenger_1_1Messenger_html_acfcc8fbbad17407c212f08cfe0196178"><div class="ttname"><a href="classmessenger_1_1Messenger.html#acfcc8fbbad17407c212f08cfe0196178">messenger::Messenger::goOnline</a></div><div class="ttdeci">void goOnline()</div><div class="ttdoc">Go online. </div><div class="ttdef"><b>Definition:</b> <a href="messenger_8cc_source.html#l00047">messenger.cc:47</a></div></div>
@@ -216,7 +216,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 22 2019 23:31:55 for ECEP590 Final Project: Elma-Instant-Messenger by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 23 2019 00:51:26 for ECEP590 Final Project: Elma-Instant-Messenger by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
