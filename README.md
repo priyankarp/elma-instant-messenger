@@ -3,7 +3,7 @@ EE590 Final Project - A simple instant messenger using Elma (C++)
 
 State Machine diagram - 
 
-![Screenshot](screenshots/state-machine-diagram.PNG)
+![Screenshot](screenshots/state-machine-diagram.png)
 
 Application Specifications
 ---
